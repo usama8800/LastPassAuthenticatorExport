@@ -58,7 +58,7 @@ function main() {
   emptyDirSync('qrs');
   for (let account of data.accounts) {
     const url = otpUrl(account);
-    QRCode.toFile(`qrs/${account.issuerName || account.userName}.png`, url);
+    QRCode.toFile(`qrs/${getLabel(account).replace(':', ' - ').replace(/[\/\?<>\\:\*\|"]/g, '_')}.png`, url);
   }
 }
 
